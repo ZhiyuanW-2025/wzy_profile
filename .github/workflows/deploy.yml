@@ -1,0 +1,73 @@
+name: Deploy personal profile
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: wzy-profile-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure deployment key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$SERVER_HOST" >> ~/.ssh/known_hosts
+
+      - name: Upload source code
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          rsync -az --delete \
+            --exclude '.git' \
+            --exclude 'node_modules' \
+            --exclude 'dist' \
+            --exclude '.vinext' \
+            --exclude '.wrangler' \
+            --exclude '.env*' \
+            ./ "$SERVER_USER@$SERVER_HOST:/var/www/wzy_profile/"
+
+      - name: Build and restart website
+        env:
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          ssh "$SERVER_USER@$SERVER_HOST" <<'REMOTE'
+            set -euo pipefail
+            export NVM_DIR=/root/.nvm
+            . /root/.nvm/nvm.sh
+            cd /var/www/wzy_profile
+            npm ci
+            npm run build
+
+            if pm2 describe wzy-profile >/dev/null 2>&1; then
+              PORT=1429 \
+              VINEXT_TRUST_PROXY=1 \
+              VINEXT_TRUSTED_HOSTS=wzy-profile.shuge.work \
+              pm2 restart wzy-profile --update-env
+            else
+              PORT=1429 \
+              VINEXT_TRUST_PROXY=1 \
+              VINEXT_TRUSTED_HOSTS=wzy-profile.shuge.work \
+              pm2 start npm --name wzy-profile -- start
+            fi
+
+            pm2 save
+            sleep 2
+            curl --fail --silent --show-error http://127.0.0.1:1429/ >/dev/null
+          REMOTE
