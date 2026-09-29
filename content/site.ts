@@ -5,32 +5,6 @@ export type PlaceholderAsset = {
   accent?: "orange" | "ink" | "lime" | "blue";
 };
 
-export const homeContent = {
-  name: "吴致远 / Zhiyuan Wu",
-  role: "AI 产品经理",
-  statement: "关注 AI、真实用户与真实业务之间的产品可能性。",
-  projects: [
-    {
-      number: "01",
-      href: "/studio",
-      eyebrow: "薯格工作室 / Sugar Studio",
-      title: "城市游戏产品与商业化实践",
-      metrics: ["近 20,000 人次参与", "C 端收入 60万+", "复购率约 50%", "6 个 B 端项目"],
-      cta: "去城市里玩",
-      kind: "city" as const,
-    },
-    {
-      number: "02",
-      href: "/agent",
-      eyebrow: "Sugar Agent",
-      title: "多成员、多智能体 AI 工作平台",
-      metrics: ["6 类专业 Agent", "8 名团队成员", "6 个真实在行项目"],
-      cta: "进入 AI 工作台",
-      kind: "agent" as const,
-    },
-  ],
-};
-
 export const studioContent = {
   hero: {
     kicker: "薯格工作室 / SUGAR STUDIO",
@@ -63,18 +37,7 @@ export const studioContent = {
       { label: "小程序二维码 / QR CODE", note: "替换：PolisSH 小程序二维码", ratio: "square", accent: "orange" },
     ] satisfies PlaceholderAsset[],
   },
-  seasons: [
-    { id: "S1", name: "初次出发", place: "上海 · 五角场", players: "约 900 人", mechanic: "城市观察 × 线索搜集", image: "PolisSH S1 季度封面" },
-    { id: "S2", name: "沿街寻迹", place: "上海 · 杨浦", players: "约 1,200 人", mechanic: "地图推理 × 团队协作", image: "PolisSH S2 季度封面" },
-    { id: "S3", name: "街角来信", place: "上海 · 虹口", players: "约 1,500 人", mechanic: "角色任务 × 城市叙事", image: "PolisSH S3 季度封面" },
-    { id: "S4", name: "另一种日常", place: "上海 · 静安", players: "约 1,800 人", mechanic: "空间探索 × NPC 互动", image: "PolisSH S4 季度封面" },
-    { id: "S5", name: "缓慢发生", place: "上海 · 徐汇", players: "约 2,100 人", mechanic: "主题路线 × 实体机关", image: "PolisSH S5 季度封面" },
-    { id: "S6", name: "城市折叠", place: "上海 · 黄浦", players: "约 2,800 人", mechanic: "多线任务 × 队伍策略", image: "PolisSH S6 季度封面" },
-    { id: "S7", name: "未完待续", place: "上海 · 跨街区", players: "约 3,500 人", mechanic: "开放地图 × 动态事件", image: "PolisSH S7 季度封面" },
-    { id: "S8", name: "支线故事", place: "上海 · 待替换", players: "数据待替换", mechanic: "玩法信息待替换", image: "PolisSH S8 季度封面" },
-    { id: "S9", name: "共同创作", place: "上海 · 待替换", players: "数据待替换", mechanic: "玩法信息待替换", image: "PolisSH S9 季度封面" },
-    { id: "S10", name: "下一站", place: "上海 · 待替换", players: "数据待替换", mechanic: "玩法信息待替换", image: "PolisSH S10 季度封面" },
-  ],
+  // Real chapter names, dates, routes and attendance live in polis-chapters.ts.
   hilton: {
     quote: "“我们想为住客做一个 City Play。”",
     steps: [
@@ -196,19 +159,146 @@ export const agentContent = {
 };
 
 export const aboutContent = {
-  name: "吴致远 / Zhiyuan Wu",
-  role: "AI 产品经理",
-  intro:
-    "我关心 AI 如何真正进入团队工作，以及产品如何把人带回真实世界。正在寻找 2027 秋招 AI 产品经理机会。",
-  background: [
-    "宾夕法尼亚大学 / University of Pennsylvania",
-    "复旦大学 / Fudan University",
-    "阿里巴巴 / 淘宝闪购 — AI 产品经理实习生",
-    "薯格工作室创始人",
-  ],
+  title: "联系我",
   links: [
     { label: "个人简历", href: "#resume-placeholder", note: "PDF 待替换" },
     { label: "电子邮箱", href: "mailto:your-email@example.com", note: "邮箱待替换" },
     { label: "联系方式", href: "#contact-placeholder", note: "微信等信息待替换" },
+    { label: "其他个人主页", href: "#profile-placeholder", note: "链接待替换" },
   ],
+};
+
+export const mapContent = {
+  index: [
+    { id: "about", label: "关于我" },
+    { id: "polis", label: "PolisSH" },
+    { id: "studio", label: "工作室" },
+    { id: "clients", label: "客户项目" },
+    { id: "agent", label: "AI 工作台" },
+    { id: "contact", label: "联系我" },
+  ],
+  intro: {
+    name: "吴致远",
+    romanized: "ZHIYUAN WU",
+    statement: "做城市游戏、产品，也做一些解决真实问题的工具。",
+    note: "喜欢把一些有意思的想法，真正做出来。",
+    credentials: ["复旦大学", "宾夕法尼亚大学", "薯格文化创始人", "曾在淘宝闪购做 AI 产品"],
+    image: "/images/home/jingansi.webp",
+  },
+  mapCards: [
+    {
+      id: "about-card",
+      number: "01",
+      title: "关于我",
+      subtitle: "吴致远 / ZHIYUAN WU",
+      words: "城市 · 产品 · 真实工作",
+      description: "做城市游戏、产品，也做一些解决真实问题的工具。喜欢把有意思的想法真正做出来。",
+      metrics: ["复旦大学", "宾夕法尼亚大学", "薯格文化创始人"],
+      accent: "paper",
+    },
+    {
+      id: "experience-card",
+      number: "02",
+      title: "核心经历",
+      subtitle: "从社团到工作室",
+      words: "校园 · 产品 · 创业 · 落地",
+      description: "从复旦城市定向社出发，持续经营城市游戏产品，并发展为薯格文化。",
+      metrics: ["2023 创建社团", "两年五星社团", "2025 公司化"],
+      accent: "green",
+    },
+    {
+      id: "polis-card",
+      number: "03",
+      title: "PolisSH 系列",
+      subtitle: "C 端城市游戏产品",
+      words: "地图 · 谜题 · 小程序 · 现场",
+      description: "把真实街区变成游戏地图，用实体任务物料和小程序连接线上流程与线下探索。",
+      metrics: ["近 20,000 人次", "约 50% 复购率", "C 端收入 60万+"],
+      accent: "red",
+    },
+    {
+      id: "client-card",
+      number: "04",
+      title: "B 端客户与项目",
+      subtitle: "B 端城市体验",
+      words: "需求 · 协作 · 落地 · 价值",
+      description: "服务酒店、城市文化活动、景区与品牌客户，把模糊需求定义成可以落地的产品。",
+      metrics: ["6 个 B 端项目", "4 个已落地", "2 个推进中"],
+      accent: "blue",
+    },
+    {
+      id: "agent-card",
+      number: "05",
+      title: "AI Agent 工作台",
+      subtitle: "Sugar Agent",
+      words: "工具 · 方法 · 效率 · 可能性",
+      description: "为解决工作室多成员、多项目协作问题，开发的一套多智能体 AI 工作平台。",
+      metrics: ["6 类 Agent", "8 名成员", "6 个实际项目"],
+      accent: "ink",
+    },
+  ],
+  club: {
+    title: "复旦大学城市定向社",
+    description: "从校园里开始的一次产品实验。围绕真实城市空间，持续组织城市探索、解谜和多人互动活动。",
+    facts: [
+      ["2023", "创建"],
+      ["五星社团", "两年内获评"],
+      ["1,000+", "社员"],
+    ],
+    assets: [
+      { label: "城市定向社早期照片", note: "替换：社团创立与早期活动照片", ratio: "wide", accent: "blue" },
+      { label: "社团活动现场", note: "替换：社员参与和团队合照", ratio: "wide", accent: "orange" },
+    ] satisfies PlaceholderAsset[],
+  },
+  polis: {
+    title: "PolisSH 城市游戏系列",
+    description: "玩家领取实体任务物料，在真实城市街区完成观察、互动和解谜，并通过小程序连接线上流程与线下探索。",
+    metrics: [
+      ["20,000", "累计参与人次"],
+      ["50%", "复购率"],
+      ["10 期", "持续产品迭代"],
+      ["60万+", "C 端累计收入"],
+      ["900 → 3,500", "正式季参与规模"],
+    ],
+  },
+  studio: {
+    title: "薯格工作室",
+    legalName: "薯格文化（上海）有限公司",
+    description: "C 端 IP 产品 + B 端城市体验定制解决方案",
+    since: "2025.12 公司化运营",
+    metrics: [
+      ["6", "个 B 端项目累计推进"],
+      ["4", "个签约并全部落地"],
+      ["2", "个仍在持续推进"],
+      ["36万+", "已落地合同金额"],
+    ],
+  },
+  clients: {
+    names: ["上海城中希尔顿", "上海国际光影节", "BILIBILI", "HUAWEI", "东方明珠", "OPPO"],
+    categories: ["企业团建", "酒店住客体验", "城市文化活动", "景区导览", "品牌营销"],
+    hilton: {
+      title: "上海城中希尔顿",
+      description: "从客户“希望为住客做一个 City Play”的模糊需求出发，经过客户沟通、用户调研和多轮方案迭代，最终完成一套融合城市探索、实景解谜、手账与手作的住客体验产品。",
+      concept: "城市手账 + 实景解谜 + 手作互动 → 个人城市艺术展",
+    },
+    lightFestival: {
+      title: "上海国际光影节 · 徐汇分会场",
+      description: "将光影装置、街区空间与城市文化内容转化为可以玩的城市任务，让观众在边走、边玩、边看的过程中主动了解城市。",
+      contract: "合同金额 12万+",
+    },
+    others: [
+      { name: "B站 / 华为", type: "企业定制团建城市游戏", asset: { label: "B站 / 华为项目", note: "替换：Logo 与一张代表图片", ratio: "wide", accent: "blue" } },
+      { name: "东方明珠", type: "塔内导览与剧情解谜体验", asset: { label: "东方明珠项目", note: "替换：Logo 与一张代表图片", ratio: "wide", accent: "orange" } },
+      { name: "OPPO", type: "结合手机拍照、运动手环与城市生活方式的品牌营销方案", asset: { label: "OPPO 项目", note: "替换：Logo 与一张代表图片", ratio: "wide", accent: "lime" } },
+    ] satisfies { name: string; type: string; asset: PlaceholderAsset }[],
+  },
+  agent: {
+    title: "Sugar Agent",
+    description: "随着团队同时推进越来越多项目，我给工作室做了一套自己的多成员、多智能体 AI 工作平台。",
+    metrics: [["6 类", "专业 Agent"], ["8 名", "团队成员"], ["6 个", "实际项目"]],
+  },
+  contact: {
+    title: "联系我",
+    description: "如果你想聊聊城市、产品、AI，或者一些还没被做出来的东西。",
+  },
 };

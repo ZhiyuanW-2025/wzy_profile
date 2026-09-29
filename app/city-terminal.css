@@ -1,0 +1,258 @@
+/* Shared project terminal styling, preserved independently of the retired map. */
+.game-terminal {
+  margin: auto;
+  padding: 0;
+  width: min(1080px, calc(100vw - 64px));
+  max-width: none;
+  height: min(840px, calc(100svh - 64px));
+  max-height: none;
+  color: #dceafa;
+  border: 2px solid #668fa6;
+  background: #0d1627;
+  box-shadow:
+    0 0 0 5px #122239,
+    0 0 0 6px #3b516c,
+    14px 16px 0 #04091380;
+  clip-path: none;
+}
+.game-terminal::backdrop {
+  background: #020812bf;
+  backdrop-filter: blur(2px);
+}
+.game-terminal[open] {
+  border-color: var(--terminal-color);
+}
+.terminal-shell {
+  height: 100%;
+  overflow: hidden;
+}
+.game-terminal .dossier-header {
+  height: 90px;
+  background: #142238;
+  border-bottom: 2px solid #445e79;
+  box-shadow: inset 0 4px #243e56;
+  padding: 18px 30px;
+}
+.game-terminal .dossier-header span {
+  color: #83b6ca;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.game-terminal .dossier-header h2 {
+  font-size: 25px;
+  color: #d5f5f5;
+  margin-top: 6px;
+}
+.game-terminal .dossier-header {
+  box-shadow: inset 0 3px var(--terminal-color);
+}
+.game-terminal .dossier-header h2::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 12px;
+  background: var(--terminal-color);
+  box-shadow: 0 0 9px var(--terminal-color);
+  vertical-align: middle;
+}
+.game-terminal .dossier-header button {
+  min-height: 44px;
+  padding: 0 14px;
+  color: #cbd7ea;
+  border-color: #627d9b;
+  background: #1a2b43;
+  font-size: 14px;
+}
+.game-terminal .dossier-header button:hover {
+  background: #294660;
+}
+.game-terminal .dossier-header button span {
+  margin-left: 14px;
+  font-size: 20px;
+}
+.game-terminal .dossier-body {
+  height: calc(100% - 90px);
+  padding: 40px 44px 60px;
+  overscroll-behavior: contain;
+}
+.game-terminal .dossier-lead {
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+.game-terminal .dossier-lead h3 {
+  max-width: 780px;
+  font-size: clamp(25px, 3vw, 37px);
+  line-height: 1.4;
+}
+.game-terminal .dossier-kicker {
+  color: #c191d5;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.game-terminal .dossier-lead > p:last-child {
+  max-width: 800px;
+  color: #acbdd1;
+  font-size: 16px;
+  line-height: 1.9;
+}
+.game-terminal .data-band strong {
+  color: #b7e6e9;
+  font-size: 25px;
+}
+.game-terminal .data-band span,
+.game-terminal .placeholder figcaption small {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.game-terminal .placeholder figcaption {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.game-terminal .placeholder figcaption span {
+  font-size: 13px;
+  line-height: 1.5;
+}
+.game-terminal .placeholder figcaption small {
+  max-width: none;
+  text-align: left;
+}
+.game-terminal .placeholder {
+  min-width: 0;
+  width: 100%;
+  border-color: #385474;
+  clip-path: none;
+  background-color: #172339;
+}
+.game-terminal .season-strip > p,
+.game-terminal .season-strip span {
+  font-size: 14px;
+  line-height: 1.4;
+}
+.game-terminal .season-strip b {
+  font-size: 12px;
+}
+.game-terminal .studio-sheet p:last-child,
+.game-terminal .studio-sheet > span {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.game-terminal .credential-sheet strong {
+  font-size: 16px;
+}
+.game-terminal .credential-sheet span {
+  font-size: 13px;
+}
+.game-terminal .contact-sheet {
+  border-color: #605282;
+  background: #191d34;
+}
+.game-terminal .contact-sheet a {
+  min-height: 54px;
+  align-items: center;
+  gap: 12px;
+}
+.game-terminal .contact-sheet a strong {
+  font-size: 16px;
+}
+.game-terminal .contact-sheet a span {
+  font-size: 14px;
+}
+.game-terminal .brand-row span {
+  font-size: 13px;
+}
+.game-terminal .case-sheet div > p:not(.dossier-kicker) {
+  font-size: 16px;
+}
+.game-terminal .case-sheet div > strong {
+  font-size: 16px;
+  line-height: 1.7;
+}
+.game-terminal .minor-clients h4,
+.game-terminal .agent-grid h4 {
+  font-size: 18px;
+}
+.game-terminal .minor-clients p,
+.game-terminal .agent-grid p,
+.game-terminal .system-sheet article p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #9eb1c7;
+}
+.game-terminal .system-sheet strong {
+  font-size: 16px;
+}
+.game-terminal .agent-grid span {
+  font-size: 13px;
+  color: #9a95d6;
+}
+.contact-terminal > h3 {
+  margin: 22px 0;
+  font-size: 36px;
+  line-height: 1.5;
+}
+.contact-terminal > p:not(.dossier-kicker) {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #adbed1;
+}
+
+@media (max-width: 680px) {
+  .game-terminal {
+    width: calc(100vw - 16px);
+    height: calc(100svh - 24px);
+    box-shadow: 0 0 0 2px #182d44;
+  }
+  .game-terminal .dossier-header {
+    height: 88px;
+    padding: 13px 14px;
+    gap: 12px;
+  }
+  .game-terminal .dossier-header h2 {
+    font-size: 20px;
+  }
+  .game-terminal .dossier-header button {
+    font-size: 12px;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+  .game-terminal .dossier-header button span {
+    margin-left: 4px;
+  }
+  .game-terminal .dossier-body {
+    height: calc(100% - 88px);
+    padding: 28px 18px 45px;
+  }
+  .game-terminal .data-band {
+    margin-top: 28px;
+  }
+  .game-terminal .contact-sheet {
+    padding: 20px;
+  }
+  .game-terminal .contact-sheet a {
+    grid-template-columns: 1fr 20px;
+    gap: 6px;
+  }
+  .game-terminal .contact-sheet a span {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 13px;
+  }
+  .game-terminal .contact-sheet a i {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+  .game-terminal .agent-grid {
+    grid-template-columns: 1fr;
+  }
+  .game-terminal .agent-grid article {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .game-terminal .agent-grid article:last-child {
+    border-bottom: 0;
+  }
+  .contact-terminal > h3 {
+    font-size: 28px;
+  }
+}

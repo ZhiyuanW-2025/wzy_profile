@@ -1,0 +1,157 @@
+/* PolisSH: product briefing, horizontal chapter select, one in-place archive. */
+.game-terminal.pc-terminal { width: min(1180px, calc(100vw - 64px)); background: #0b1524; }
+.game-terminal .polis-chapters { padding: 28px 32px 40px; scrollbar-color: #997492 #101a2b; }
+.polis-chapters { position: relative; --pc-pink: #f7a1d2; --pc-cyan: #94e9ef; --pc-line: #304358; color: #e4edf5; }
+.polis-chapters button { cursor: pointer; }
+.polis-chapters button:disabled { opacity: .28; cursor: default; }
+.polis-chapters button:focus-visible, .pc-archive:focus-visible { outline: 2px solid #eacb86; outline-offset: 3px; }
+.pc-kicker { margin: 0; color: #9fa9c8; font: 10px/1.5 var(--font-mono); letter-spacing: .13em; }
+.pc-intro-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.pc-intro-heading h3 { margin: 7px 0 0; color: #f6dfec; font: 650 39px/1.2 var(--font-mono); letter-spacing: -.055em; }
+.pc-intro-heading h3 > span { display: inline-block; margin-left: 20px; color: #c3d0df; font: 500 17px/1.5 var(--font-sans); letter-spacing: .1em; }
+.pc-intro-badge { border-bottom: 1px solid #597782; padding-bottom: 7px; color: #86aeba; font-size: 11px; white-space: nowrap; }
+.pc-intro-copy { display: grid; grid-template-columns: 1.35fr 1fr; gap: 27px; margin-top: 24px; }
+.pc-intro-copy p { margin: 0; color: #9bafc1; font-size: 14px; line-height: 1.95; }
+.pc-intro-copy p:first-child strong { color: #e1e8f1; font-weight: 550; }
+.pc-intro-copy p:last-child { border-left: 2px solid #586473; padding: 0 0 0 24px; color: #a7becb; }
+.pc-intro-copy p:last-child strong { color: #d8b9d7; font-weight: 550; }
+.pc-metrics { display: grid; grid-template-columns: .75fr 1.35fr 1fr 1fr; gap: 24px; padding: 21px 0; margin: 26px 0 0; border-block: 1px solid var(--pc-line); }
+.pc-metrics > div { display: flex; flex-direction: column-reverse; gap: 7px; }
+.pc-metrics dt { color: #8199ac; font-size: 11px; }
+.pc-metrics dd { margin: 0; color: #c5e1e7; font: 500 29px/1.1 var(--font-mono); letter-spacing: -.04em; }
+.pc-metrics > :first-child dd { color: var(--pc-pink); }
+.pc-selector { margin-top: 30px; }
+.pc-selector-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.pc-selector-heading .pc-kicker { color: #9aa2b3; font-size: 9px; }
+.pc-selector-heading h3 { display: flex; align-items: center; gap: 17px; margin: 5px 0 0; color: #f2e5ef; font-size: 22px; font-weight: 550; letter-spacing: .09em; }
+.pc-selector-heading h3 > span { font: 11px/1 var(--font-mono); color: #c397b4; letter-spacing: .06em; }
+.pc-selector-controls { display: flex; gap: 7px; }
+.pc-selector-controls button { border: 1px solid #46546c; background: #172338; color: #d1bfd7; width: 42px; height: 38px; font-size: 20px; transition: border-color 180ms, background 180ms; }
+.pc-selector-controls button:not(:disabled):hover { border-color: #ed9dcb; background: #2c2540; }
+.pc-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 15px; color: #778fa6; font-size: 10px; }
+.pc-legend > span { display: flex; align-items: center; gap: 6px; }
+.pc-legend i { display: inline-block; width: 10px; height: 10px; border: 1px solid #829aac; border-radius: 50%; }
+.pc-legend i[data-shape="side"] { width: 6px; height: 6px; margin: 2px; background: #48576e; }
+.pc-legend i[data-shape="anniversary"] { width: 8px; height: 8px; border-color: #d4b67e; border-radius: 0; transform: rotate(45deg); }
+.pc-rail { margin-top: 11px; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; scrollbar-color: #766185 #0f1c2d; padding: 7px 0 4px; }
+.pc-tabs { position: relative; display: grid; grid-template-columns: 1fr 1fr .88fr 1fr 1.15fr 1fr .82fr 1fr 1.12fr 1fr; min-width: 940px; isolation: isolate; }
+.pc-tabs::before { content: ""; position: absolute; z-index: -1; top: 43px; left: 5%; right: 5%; height: 2px; background: #3c455f; box-shadow: 0 0 8px #a997de15; }
+.pc-chapter-tab { display: flex; flex-direction: column; align-items: center; min-width: 0; padding: 0 5px 5px; border: 0; background: transparent; color: #8397af; transition: color 180ms; }
+.pc-node-stage { height: 86px; display: grid; place-items: center; }
+.pc-node { position: relative; display: grid; place-items: center; width: 52px; height: 52px; border: 2px solid #556682; border-radius: 50%; background: #111e32; box-shadow: inset 0 0 0 4px #111e32, inset 0 0 0 5px #314359; transition: border-color 180ms, box-shadow 180ms, background 180ms; }
+.pc-node > b { font: 550 17px/1 var(--font-mono); }
+.pc-node::before { content: ""; position: absolute; inset: -7px; border: 1px solid transparent; border-radius: inherit; }
+.pc-chapter-tab:not([data-kind="main"]) .pc-node { width: 35px; height: 35px; border-width: 1px; box-shadow: inset 0 0 0 3px #111e32, inset 0 0 0 4px #2c3b53; }
+.pc-chapter-tab:not([data-kind="main"]) .pc-node > b { font-size: 11px; }
+.pc-chapter-tab[data-kind="anniversary"] .pc-node { width: 39px; height: 39px; border-radius: 3px; transform: rotate(45deg); color: #ddc493; border-color: #8c795c; }
+.pc-chapter-tab[data-kind="anniversary"] .pc-node > b { transform: rotate(-45deg); }
+.pc-chapter-tab > strong { min-height: 36px; max-width: 108px; color: inherit; font-size: 11px; font-weight: 450; line-height: 1.65; text-align: center; display: grid; place-items: start center; }
+.pc-selected-marker { color: transparent; height: 17px; font-size: 8px; letter-spacing: .05em; margin-top: 3px; }
+.pc-chapter-tab:hover { color: #d5dfea; }
+.pc-chapter-tab:hover .pc-node { border-color: #bca3c8; }
+.pc-chapter-tab[aria-selected="true"] { color: #f9d4ea; }
+.pc-chapter-tab[aria-selected="true"] .pc-node { border-color: #ffc0e5; background: #37223e; box-shadow: inset 0 0 0 4px #35223c, inset 0 0 0 5px #9a627f, 0 0 22px #ff72c640; }
+.pc-chapter-tab[aria-selected="true"] .pc-node::before { border-color: #a56084; }
+.pc-chapter-tab[aria-selected="true"] > strong { font-weight: 650; }
+.pc-chapter-tab[aria-selected="true"] .pc-selected-marker { color: #dea1c5; }
+.pc-chapter-tab[data-kind="anniversary"][aria-selected="true"] .pc-node { border-color: #ffe0a0; box-shadow: inset 0 0 0 4px #352c30, inset 0 0 0 5px #927959, 0 0 22px #f6cb743a; }
+.pc-chapter-tab[data-kind="anniversary"][aria-selected="true"] .pc-node::before { border-color: #b19366; }
+.pc-announcement { position: absolute; top: 0; left: 0; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.pc-archive { margin-top: 8px; border: 1px solid #79536e; box-shadow: 0 0 0 3px #171c30, 0 0 0 4px #35405a; background: #0e1b2c; }
+.pc-archive-header { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 14px 20px; border-bottom: 1px solid #3d455e; background: #201e34; }
+.pc-archive-header > span:first-child { color: #edd2e2; font-size: 12px; letter-spacing: .12em; display: flex; align-items: center; gap: 9px; }
+.pc-archive-header i { width: 5px; height: 5px; background: #ffb5dc; box-shadow: 0 0 9px #f58abc88; }
+.pc-archive-header > span:last-child { color: #9c8aa9; font: 9px/1.5 var(--font-mono); letter-spacing: .08em; }
+.pc-archive-header b { margin-left: 20px; color: #645777; }
+.pc-archive-layout { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1fr); align-items: stretch; gap: 32px; padding: 24px; animation: pc-archive-in 180ms ease-out; }
+/* The text determines the shared row height. The full poster fits inside that
+   height, anchored to its bottom edge, so neither column can overrun the other. */
+.pc-gallery { position: relative; min-width: 0; }
+.pc-media { position: absolute; inset: 0; margin: 0; min-width: 0; }
+/* The clipping frame hugs the poster, not the column's empty side margins.
+   Scaling from the upper-left trims only the unwanted right/bottom edges. */
+.pc-media-stage { position: absolute; bottom: 0; left: 50%; height: 100%; width: auto; max-width: 100%; aspect-ratio: var(--pc-poster-ratio); transform: translateX(-50%); overflow: hidden; }
+.pc-media-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 22px 12px; background-image: linear-gradient(#967aa30b 1px, transparent 1px), linear-gradient(90deg,#967aa30b 1px,transparent 1px); background-size: 24px 24px; color: #7e87a4; text-align: center; }
+.pc-media-placeholder svg { width: 34px; height: 29px; color: #777f9a; }
+.pc-media-placeholder strong { color: #9fa7bf; font-size: 12px; font-weight: 450; line-height: 1.65; }
+.pc-media-placeholder > span { color: #687f96; font-size: 10px; }
+.pc-media-stage > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; transform: scale(var(--pc-poster-zoom, 1)); transform-origin: left top; }
+.pc-season-info { display: flex; flex-direction: column; min-width: 0; }
+.pc-season-code { display: flex; justify-content: space-between; align-items: center; gap: 15px; color: #a4adbf; font: 10px/1.5 var(--font-mono); letter-spacing: .08em; }
+.pc-season-code > span:last-child { display: flex; align-items: center; gap: 6px; color: #95c8bb; font-size: 10px; white-space: nowrap; }
+.pc-season-code i { display: block; width: 4px; height: 4px; background: #93d7bc; }
+.pc-season-name { margin: 25px 0 9px; color: #baa0b8; font-size: 13px; line-height: 1.75; }
+.pc-season-info h4 { margin: 0; color: #fae4f0; font-size: clamp(24px, 2.6vw, 31px); font-weight: 600; line-height: 1.6; letter-spacing: .025em; text-wrap: balance; overflow-wrap: anywhere; }
+.pc-season-facts { margin: 24px 0 0; }
+.pc-season-facts > div { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; align-items: center; min-height: 46px; border-top: 1px solid #293f53; }
+.pc-season-facts dt { color: #7c98ad; font-size: 11px; }
+.pc-season-facts dd { margin: 0; color: #c5d2df; font-size: 13px; line-height: 1.6; }
+.pc-season-facts .pc-season-players { margin-top: 3px; padding: 14px 0; }
+.pc-season-players dd { display: flex; align-items: baseline; gap: 10px; }
+.pc-season-players strong { color: #a5e5ea; font: 550 37px/1 var(--font-mono); letter-spacing: -.05em; }
+.pc-season-players dd > span { color: #7496a8; font-size: 11px; }
+.pc-route { padding-top: 19px; margin-top: 6px; border-top: 1px solid #293f53; }
+.pc-route h5 { margin: 0 0 14px; color: #a6bdca; font-size: 12px; font-weight: 450; }
+.pc-route h5 > span { color: #84c6ce; margin-right: 4px; }
+.pc-route ol { display: flex; flex-wrap: wrap; gap: 9px 5px; list-style: none; padding: 0; margin: 0; }
+.pc-route li { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+.pc-route li > span { display: flex; align-items: center; gap: 7px; border: 1px solid #375163; background: #162a39; color: #c1d3da; padding: 7px 8px; }
+.pc-route li b { font: 8px/1 var(--font-mono); color: #7395a1; }
+.pc-route li i { font-style: normal; color: #658b9a; }
+.pc-season-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #293f53; margin-top: 28px; padding-top: 15px; color: #667d92; font: 9px/1 var(--font-mono); letter-spacing: .06em; }
+.pc-season-footer > span:last-child { color: #b5a0be; }
+@keyframes pc-archive-in { from { opacity: .55; } to { opacity: 1; } }
+
+@media (max-width: 900px) {
+  .game-terminal .polis-chapters { padding-inline: 23px; }
+  .pc-intro-copy { grid-template-columns: 1fr; gap: 16px; }
+  .pc-intro-copy p:last-child { padding-left: 16px; }
+  .pc-archive-layout { gap: 20px; padding: 18px; }
+  .pc-season-info h4 { font-size: 25px; }
+  .pc-season-code { gap: 6px; font-size: 9px; }
+  .pc-route li { font-size: 10px; }
+  .pc-season-players strong { font-size: 31px; }
+  .pc-media-placeholder strong { font-size: 11px; }
+}
+@media (max-width: 680px) {
+  .game-terminal.pc-terminal { width: calc(100vw - 16px); }
+  .game-terminal.pc-terminal .dossier-header > div:first-child > span { font-size: 9px; }
+  .game-terminal .polis-chapters { padding: 24px 16px 30px; }
+  .pc-intro-heading { align-items: start; }
+  .pc-intro-heading h3 { font-size: 34px; }
+  .pc-intro-heading h3 > span { display: block; margin: 6px 0 0; font-size: 14px; }
+  .pc-intro-badge { display: none; }
+  .pc-intro-copy { margin-top: 20px; }
+  .pc-intro-copy p { font-size: 13px; line-height: 2; }
+  .pc-metrics { grid-template-columns: 1fr 1fr; gap: 21px; padding: 20px 0; margin-top: 22px; }
+  .pc-metrics dd { font-size: 27px; }
+  .pc-metrics dt { font-size: 10px; }
+  .pc-selector { margin-top: 26px; }
+  .pc-selector-heading h3 { font-size: 20px; gap: 11px; }
+  .pc-selector-heading h3 > span { font-size: 10px; }
+  .pc-selector-controls { gap: 5px; }
+  .pc-selector-controls button { width: 44px; height: 44px; }
+  .pc-legend { gap: 9px 13px; font-size: 9px; }
+  .pc-rail { margin-inline: -8px; padding-inline: 8px; }
+  .pc-tabs { min-width: 960px; }
+  .pc-archive { margin-top: 10px; }
+  .pc-archive-header { padding: 12px 13px; }
+  .pc-archive-header > span:first-child { font-size: 11px; }
+  .pc-archive-header b { margin-left: 7px; }
+  .pc-archive-layout { grid-template-columns: minmax(0, 1fr); padding: 16px 13px; gap: 23px; }
+  .pc-gallery { aspect-ratio: var(--pc-poster-ratio); width: 100%; max-width: 360px; justify-self: center; }
+  .pc-season-name { margin-top: 20px; font-size: 12px; }
+  .pc-season-info h4 { font-size: 25px; line-height: 1.5; }
+  .pc-season-facts { margin-top: 20px; }
+  .pc-season-facts > div { min-height: 41px; }
+  .pc-season-players strong { font-size: 36px; }
+  .pc-route { padding-top: 16px; }
+  .pc-route li { font-size: 11px; }
+  .pc-season-footer { margin-top: 20px; padding-top: 12px; }
+  .pc-media-placeholder strong { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pc-archive-layout { animation: none; }
+  .polis-chapters button, .pc-node { transition: none; }
+}

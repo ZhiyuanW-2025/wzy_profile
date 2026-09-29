@@ -1,0 +1,5 @@
+# Copy to .dev.vars, fill locally, then restart npm run dev.
+# Never paste secrets into chat or commit .dev.vars.
+RESEND_API_KEY=""
+# Must be a sender on a domain verified in Resend, not the recipient's 163 address.
+CITY_MAIL_FROM=""

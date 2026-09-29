@@ -1,0 +1,43 @@
+/* Compact communications terminal; other project dialogs retain their layouts. */
+.game-terminal.ct-terminal { width: min(730px, calc(100vw - 40px)); height: fit-content; max-height: calc(100svh - 40px); background: #0b1828; }
+.ct-terminal .terminal-shell { display: flex; flex-direction: column; height: auto; max-height: inherit; }
+.game-terminal.ct-terminal .dossier-header { flex-shrink: 0; height: 82px; padding: 16px 25px; border-bottom: 1px solid #36516b; }
+.game-terminal.ct-terminal .dossier-header h2 { font-size: 21px; }
+.game-terminal.ct-terminal .dossier-header > div > span { font: 10px/1.5 var(--font-mono); }
+.game-terminal.ct-terminal .contact-terminal { height: auto; min-height: 0; padding: 28px 26px 16px; }
+.contact-terminal > h3 { margin: 0; color: #dcf4f5; font-size: clamp(21px, 3vw, 28px); font-weight: 550; line-height: 1.55; letter-spacing: .015em; }
+.contact-terminal > p.ct-subtitle { margin: 10px 0 25px; color: #9ab6c8; font-size: 13px; line-height: 1.8; }
+.ct-channels { display: grid; gap: 8px; }
+.ct-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 65px; padding: 8px 12px; background: #112338; border-left: 2px solid #426a80; transition: background 160ms, border-color 160ms; }
+.ct-row:hover, .ct-row:focus-within { border-left-color: #83e6e4; background: #183047; }
+.ct-label { display: flex; align-items: center; gap: 9px; flex-shrink: 0; color: #9cbbcd; font-size: 12px; }
+.ct-row svg { width: 17px; height: 17px; flex-shrink: 0; }
+.ct-label svg { color: #7bccd8; }
+.ct-value-actions { display: flex; align-items: center; min-width: 0; gap: 6px; }
+.ct-copy, .ct-mail { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 7px; color: #d3edf0; border: 0; background: transparent; cursor: pointer; text-decoration: none; }
+.ct-copy { gap: 12px; font: 13px/1.5 var(--font-mono); white-space: nowrap; }
+.ct-copy svg { width: 13px; height: 13px; color: #6e96ac; }
+.ct-mail { width: 34px; color: #9bcfdc; }
+.ct-copy:hover, .ct-mail:hover { color: #9df7ed; background: #25465b; }
+.ct-copy:focus-visible, .ct-mail:focus-visible { outline: 2px solid #efcf88; outline-offset: 2px; }
+.ct-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 20px; margin-top: 20px; font: 9px/1.8 var(--font-mono); }
+.ct-online { display: flex; align-items: center; gap: 7px; color: #8bdcc2; letter-spacing: .08em; }
+.ct-online i { width: 5px; height: 5px; background: #8bdcc2; box-shadow: 0 0 8px #8bdcc250; }
+.ct-hint { color: #87a1b6; font-family: var(--font-sans); }
+.contact-terminal > p.ct-feedback { min-height: 18px; margin: 8px 0 0; color: #a3e7d3; font-size: 11px; line-height: 1.6; }
+@media (max-width: 680px) {
+  .game-terminal.ct-terminal { width: calc(100vw - 20px); max-height: calc(100svh - 24px); }
+  .game-terminal.ct-terminal .dossier-header { padding: 13px 15px; }
+  .game-terminal.ct-terminal .contact-terminal { padding: 23px 16px 12px; }
+  .contact-terminal > h3 { font-size: 22px; }
+  .contact-terminal > p.ct-subtitle { font-size: 12px; margin-bottom: 20px; }
+  .ct-row { padding-inline: 8px; gap: 5px; }
+  .ct-label { gap: 5px; font-size: 11px; }
+  .ct-label svg { width: 13px; height: 13px; }
+  .ct-copy { font-size: 11px; gap: 7px; padding-inline: 3px; }
+  .ct-copy svg { display: none; }
+  .ct-mail { width: 28px; padding-inline: 5px; }
+  .ct-value-actions { gap: 2px; }
+}
+@media (max-width: 360px) { .ct-label { gap: 0; } .ct-label svg { display: none; } }
+@media (prefers-reduced-motion: reduce) { .ct-row { transition: none; } }

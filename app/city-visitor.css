@@ -1,0 +1,51 @@
+/* One discoverable, moving entry. No permanent map markers or collectibles. */
+.rc-helicopter-entry { position: absolute; z-index: 3; width: max(88px, calc(44px / var(--map-scale, 1))); height: max(54px, calc(44px / var(--map-scale, 1))); transform: translate(-50%, -50%); border: 0; padding: 0; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.rc-helicopter-entry[hidden] { display: none; }
+.rc-helicopter-entry:disabled { pointer-events: none; }
+.rc-helicopter-entry:focus-visible { outline: 1px dashed #a2eeeb; outline-offset: 4px; }
+.rc-visitor-invitation { position: absolute; left: 50%; bottom: calc(100% + 8px); display: flex; align-items: center; gap: 8px; width: max-content; padding: 11px 12px; background: #06172ff5; border: 1px solid #6fbecf; box-shadow: inset 0 0 0 3px #143452, 3px 3px #020a1b; font: 12px/1.5 "PingFang SC", system-ui, sans-serif; color: #c8f9f4; transform-origin: bottom center; transform: translateX(-50%) scale(calc(1 / var(--map-scale, 1))); opacity: 1; visibility: visible; }
+.rc-visitor-invitation::before { content: ""; position: absolute; bottom: -6px; left: calc(50% - 4px); width: 8px; height: 6px; background: #0b2039; border: solid #6fbecf; border-width: 0 1px 1px; }
+.rc-visitor-invitation i { font-style: normal; color: #ff9ade; }
+.rc-visitor-invitation b { font-weight: 500; color: #74dfef; }
+
+.rc-visitor-dialog { width: min(440px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; overflow: auto; border: 1px solid #7bb3d1; background: #08182d; color: #dcecf5; box-shadow: 0 0 0 3px #16334e, 0 0 0 4px #284966, 10px 10px 0 #02081777; font: 13px/1.6 "PingFang SC", system-ui, sans-serif; overscroll-behavior: contain; }
+.rc-visitor-dialog::backdrop { background: #020b20a3; }
+.rc-visitor-panel { padding: 0 22px; }
+.rc-visitor-panel header { display: flex; align-items: center; justify-content: space-between; min-height: 51px; border-bottom: 1px solid #29465e; color: #9cdddf; font-size: 11px; letter-spacing: .08em; }
+.rc-visitor-panel header small { margin-left: 10px; color: #7092b0; font: 9px monospace; letter-spacing: .13em; }
+.rc-visitor-panel header button, .rc-visitor-arrived button { width: 44px; height: 44px; margin-right: -12px; padding: 0; color: #99bace; background: none; border: 0; font-size: 21px; cursor: pointer; }
+.rc-visitor-intro { display: flex; align-items: center; gap: 15px; padding: 22px 0 19px; }
+.rc-visitor-intro > span { display: grid; place-items: center; width: 52px; height: 56px; border: 1px solid #4b7593; background: #12304a; box-shadow: 3px 3px #1f445c; font-size: 29px; flex-shrink: 0; }
+.rc-visitor-intro h2 { margin: 0 0 5px; font-size: 20px; line-height: 1.5; color: #e3fcfa; font-weight: 600; letter-spacing: .07em; }
+.rc-visitor-intro p { margin: 0; color: #97adc2; font-size: 11px; }
+.rc-emoji-field { padding: 0; margin: 0 0 18px; border: 0; }
+.rc-emoji-field legend, .rc-message-label { display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 0 0 9px; font-size: 11px; color: #9dbed3; letter-spacing: .03em; }
+.rc-emoji-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; }
+.rc-emoji-grid button { display: grid; place-items: center; min-width: 0; min-height: 44px; padding: 4px; font-size: 23px; line-height: 1; border: 1px solid #284866; background: #0c2139; cursor: pointer; transition: border-color 150ms, background 150ms; }
+.rc-emoji-grid button:hover { background: #18394e; border-color: #7098b2; }
+.rc-emoji-grid button[aria-pressed="true"] { border-color: #7de4de; background: #194251; box-shadow: inset 0 0 0 2px #265b65; }
+.rc-message-label small { color: #6789a4; font: 10px monospace; }
+.rc-name-field { margin-bottom: 16px; }
+.rc-name-field input { display: block; width: 100%; min-height: 44px; padding: 9px 12px; border: 1px solid #395e7c; border-radius: 0; background: #041227; color: #e5f3fa; font: 13px/1.6 "PingFang SC", system-ui, sans-serif; }
+.rc-name-field input::placeholder { color: #59738e; font-size: 12px; }
+.rc-name-field input:focus-visible { outline: 2px solid #93eee3; outline-offset: 2px; }
+.rc-visitor-panel textarea { display: block; width: 100%; padding: 11px 12px; border: 1px solid #395e7c; background: #041227; color: #e5f3fa; resize: vertical; min-height: 95px; max-height: 200px; font: 13px/1.75 "PingFang SC", system-ui, sans-serif; border-radius: 0; }
+.rc-visitor-panel textarea::placeholder { color: #59738e; font-size: 12px; }
+.rc-visitor-panel button:focus-visible, .rc-visitor-panel textarea:focus-visible { outline: 2px solid #93eee3; outline-offset: 2px; }
+.rc-visitor-panel button:disabled { opacity: .4; cursor: not-allowed; }
+.rc-visitor-privacy { margin: 10px 0 0; font-size: 10px; line-height: 1.8; color: #859bb1; }
+.rc-visitor-feedback { color: #efc299; font-size: 11px; line-height: 1.7; min-height: 32px; padding: 8px 0; }
+.rc-visitor-submit { display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 45px; padding: 10px 15px; color: #d4ffff; border: 1px solid #67cbd5; background: #163e52; box-shadow: inset 0 0 0 3px #204c60; font-size: 13px; cursor: pointer; }
+.rc-visitor-submit:hover:not(:disabled) { background: #24566a; box-shadow: inset 0 0 0 3px #2a697b, 0 0 12px #58d8e52a; }
+.rc-visitor-demo { min-height: 44px; width: 100%; margin-top: 6px; padding: 8px; border: 0; background: none; color: #9faeca; font-size: 11px; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.rc-visitor-panel footer { display: flex; justify-content: flex-end; margin-top: 17px; padding: 11px 0; border-top: 1px solid #28465e; font-size: 9px; color: #6285a2; }
+.rc-visitor-honeypot { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+.rc-visitor-arrived { position: absolute; z-index: 4; bottom: 74px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; width: max-content; max-width: calc(100% - 28px); background: #061930f5; border: 1px solid #406c8d; padding: 6px 14px; box-shadow: inset 0 0 0 3px #15314b; }
+.rc-visitor-arrived > b { font-size: 23px; font-weight: 400; }
+.rc-visitor-arrived small, .rc-visitor-arrived span { display: block; }
+.rc-visitor-arrived small { font-size: 9px; color: #8ca6be; }
+.rc-visitor-arrived span { font-size: 12px; margin-top: 3px; color: #c1ecf1; }
+@media (max-width: 760px) { .rc-visitor-arrived { bottom: 84px; } .rc-visitor-invitation { font-size: 11px; gap: 5px; padding: 9px; } }
+@media (max-width: 400px) { .rc-visitor-panel { padding: 0 16px; } .rc-emoji-grid { gap: 5px; } .rc-visitor-panel header small { font-size: 8px; } }
+@media (max-width: 360px) { .rc-emoji-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .rc-visitor-invitation, .rc-emoji-grid button { transition: none; } }
