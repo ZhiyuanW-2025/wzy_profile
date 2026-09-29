@@ -55,6 +55,17 @@ jobs:
             npm ci
             npm run build
 
+            if [ ! -f /etc/wzy-profile.env ]; then
+              echo "Missing /etc/wzy-profile.env" >&2
+              exit 1
+            fi
+
+            set -a
+            . /etc/wzy-profile.env
+            set +a
+            : "${RESEND_API_KEY:?Missing RESEND_API_KEY in /etc/wzy-profile.env}"
+            : "${CITY_MAIL_FROM:?Missing CITY_MAIL_FROM in /etc/wzy-profile.env}"
+
             if pm2 describe wzy-profile >/dev/null 2>&1; then
               PORT=1429 \
               VINEXT_TRUST_PROXY=1 \
@@ -70,4 +81,6 @@ jobs:
             pm2 save
             sleep 2
             curl --fail --silent --show-error http://127.0.0.1:1429/ >/dev/null
+            curl --fail --silent --show-error http://127.0.0.1:1429/api/visitors \
+              | grep --quiet '"configured":true'
           REMOTE
