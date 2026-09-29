@@ -52,6 +52,5 @@ export const agentSystem = {
   ],
   outcome: "已投入工作室日常使用，覆盖全部8名成员、6个在行项目",
   privacy: "出于客户资料、内部知识库和API成本考虑，公开版本不连接生产数据；代码与产品结构可在GitHub查看。",
-  // Set this to the user-provided repository URL. No invented link or live demo.
-  githubUrl: "",
+  githubUrl: "https://github.com/ZhiyuanW-2025/sugar_studio",
 };

@@ -40,7 +40,6 @@ export function CityHud({ indexOpen, indexButton, onToggleIndex, onEnter, active
       <div className="rc-avatar-frame"><PixelAvatar /><span>01</span></div>
       <div className="rc-player-info">
         <div className="rc-player-name"><h1>{city.player.name}</h1><span>{city.player.romanized}</span></div>
-        <p className="rc-player-role">{city.player.identity}</p>
         <div className="rc-player-state"><span>主城 <b>{city.player.city}</b></span><span><i />{city.player.status}</span></div>
       </div>
     </section>

@@ -67,12 +67,14 @@ test("all eight local screenshots retain their original full-resolution PNG dime
   }
 });
 
-test("outcome states actual usage and privacy boundary; missing GitHub link is disabled", () => {
+test("outcome states actual usage and privacy boundary with the real GitHub repository", () => {
   const html = render();
   assert.ok(html.includes(system.outcome));
   assert.ok(html.includes(system.privacy));
-  assert.match(html, /disabled="" aria-describedby="sf-github-note"/);
-  assert.match(html, /仓库链接待补充/);
+  assert.equal(system.githubUrl, "https://github.com/ZhiyuanW-2025/sugar_studio");
+  assert.match(html, /href="https:\/\/github\.com\/ZhiyuanW-2025\/sugar_studio"/);
+  assert.match(html, /target="_blank" rel="noopener noreferrer"/);
+  assert.doesNotMatch(html, /disabled="" aria-describedby="sf-github-note"|仓库链接待补充/);
   assert.match(html, /返回城市/);
   assert.doesNotMatch(html, /href="#"|<form|<input/);
 });

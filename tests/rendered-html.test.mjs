@@ -17,7 +17,7 @@ async function render(path = "/") {
   );
 }
 
-const pages = [["/", "吴致远", "PolisSH 系列"]];
+const pages = [["/", "吴致远", "C端产品｜PolisSH系列"]];
 
 for (const [path, title, content] of pages) {
   test(`server-renders ${path}`, async () => {
@@ -40,12 +40,12 @@ for (const [path, title, content] of pages) {
 test("renders six accessible building entrances, not floating project cards", async () => {
   const html = await (await render("/")).text();
   for (const label of [
-    "进入关于我：个人终端",
-    "进入关于我的工作室：Traveler Plaza",
-    "进入PolisSH 系列：城市游戏街区",
-    "进入B 端客户与项目：商业合作区",
-    "进入AI Agent 工作台：数字实验室",
-    "进入联系我：通讯塔",
+    "进入关于我：角色档案",
+    "进入关于我的工作室：工作室档案",
+    "进入C端产品｜PolisSH系列：章节选择",
+    "进入B端项目｜定制化解决方案：项目档案",
+    "进入AI工作台｜Sugar Agent：系统档案",
+    "进入联系我：通讯终端",
   ]) {
     assert.ok(html.includes(`aria-label="${label}"`));
   }
@@ -62,7 +62,8 @@ test("homepage has a player HUD and the retired map is no longer served", async 
   assert.match(html, /重置地图，返回主城视角/);
   assert.match(html, /暂停动态/);
   assert.doesNotMatch(html, /href="\/legacy"|旧版地图/);
-  for (const text of ["玩家信息", "产品构建者", "主线目标", "地图：打开地点索引", "通讯终端", "当前区域", "MAP MODE", "ESC"]) assert.ok(html.includes(text));
+  for (const text of ["玩家信息", "主线目标", "在热爱中创造价值", "地图：打开地点索引", "通讯终端", "当前区域", "MAP MODE", "ESC", "角色档案", "工作室档案", "C端产品｜PolisSH系列", "B端项目｜定制化解决方案", "AI工作台｜Sugar Agent"]) assert.ok(html.includes(text));
+  assert.doesNotMatch(html, /产品构建者 \/ 城市游戏设计者|把有意思的想法做成真实产品/);
   assert.equal((html.match(/class="rc-building-outline"/g) ?? []).length, 6);
   assert.doesNotMatch(html, /class="city-stage/);
   const response = await render("/legacy");

@@ -21,17 +21,16 @@ export const referenceCity = {
   sprites: "/city-v2/actors.png",
   player: {
     name: "吴致远", romanized: "ZHIYUAN WU",
-    identity: "产品构建者 / 城市游戏设计者",
     city: "上海", status: "自由探索",
-    objective: "把有意思的想法做成真实产品",
+    objective: "在热爱中创造价值",
   },
   entrances: [
-    { id: "about-card", label: "关于我", district: "个人终端", color: "#58edff", box: [102, 54, 290, 235], polygon: "17% 0, 55% 0, 87% 27%, 100% 57%, 89% 91%, 28% 100%, 0 62%, 0 36%" },
-    { id: "experience-card", label: "关于我的工作室", district: "Traveler Plaza", color: "#8de8ff", box: [235, 306, 322, 229], polygon: "48% 0, 91% 0, 100% 67%, 91% 100%, 0 100%, 0 48%, 43% 45%" },
-    { id: "polis-card", label: "PolisSH 系列", district: "城市游戏街区", color: "#ff61d9", box: [596, 204, 285, 253], polygon: "0 0, 95% 0, 95% 13%, 78% 13%, 88% 56%, 100% 93%, 10% 100%, 7% 45%, 27% 15%, 0 15%" },
-    { id: "client-card", label: "B 端客户与项目", district: "商业合作区", color: "#ffcf85", box: [914, 204, 266, 288], polygon: "0 0, 97% 0, 100% 100%, 0 100%" },
-    { id: "agent-card", label: "AI Agent 工作台", district: "数字实验室", color: "#68e2ff", box: [1202, 213, 308, 293], polygon: "0 0, 94% 0, 94% 17%, 64% 17%, 100% 60%, 91% 100%, 7% 94%, 0 44%" },
-    { id: "contact", label: "联系我", district: "通讯塔", color: "#a397ff", box: [1240, 516, 332, 262], polygon: "20% 19%, 43% 0, 56% 13%, 56% 37%, 100% 67%, 98% 92%, 41% 100%, 0 75%, 0 45%" },
+    { id: "about-card", label: "关于我", district: "角色档案", color: "#58edff", box: [102, 54, 290, 235], polygon: "17% 0, 55% 0, 87% 27%, 100% 57%, 89% 91%, 28% 100%, 0 62%, 0 36%" },
+    { id: "experience-card", label: "关于我的工作室", district: "工作室档案", color: "#8de8ff", box: [235, 306, 322, 229], polygon: "48% 0, 91% 0, 100% 67%, 91% 100%, 0 100%, 0 48%, 43% 45%" },
+    { id: "polis-card", label: "C端产品｜PolisSH系列", district: "章节选择", color: "#ff61d9", box: [596, 204, 285, 253], polygon: "0 0, 95% 0, 95% 13%, 78% 13%, 88% 56%, 100% 93%, 10% 100%, 7% 45%, 27% 15%, 0 15%" },
+    { id: "client-card", label: "B端项目｜定制化解决方案", district: "项目档案", color: "#ffcf85", box: [914, 204, 266, 288], polygon: "0 0, 97% 0, 100% 100%, 0 100%" },
+    { id: "agent-card", label: "AI工作台｜Sugar Agent", district: "系统档案", color: "#68e2ff", box: [1202, 213, 308, 293], polygon: "0 0, 94% 0, 94% 17%, 64% 17%, 100% 60%, 91% 100%, 7% 94%, 0 44%" },
+    { id: "contact", label: "联系我", district: "通讯终端", color: "#a397ff", box: [1240, 516, 332, 262], polygon: "20% 19%, 43% 0, 56% 13%, 56% 37%, 100% 67%, 98% 92%, 41% 100%, 0 75%, 0 45%" },
   ] satisfies CityEntrance[],
   lighting: {
     signs: [
